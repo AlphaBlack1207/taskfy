@@ -31,6 +31,8 @@
     "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/return-await": "off",
-    "@typescript-eslint/no-non-null-assertion": "off"
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/prefer-optional-chain":"off",
+    "@typescript-eslint/restrict-template-expressions": "off"
   }
 }
