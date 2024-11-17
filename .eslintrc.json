@@ -26,8 +26,11 @@
     "@typescript-eslint/explicit-function-return-type":"off",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/consistent-type-definitions": "warn",
-    "@typescript-eslint/consistent-type-imports": "warn"
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/return-await": "off",
+    "@typescript-eslint/no-non-null-assertion": "off"
   }
 }
