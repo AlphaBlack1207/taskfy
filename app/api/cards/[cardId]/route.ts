@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET(
   req: Request,
-  context: { params: { cardId: string } }
+  context: { params: Promise<{ cardId: string }> }
 ) {
   try {
     const { userId, orgId } = await auth()
@@ -16,7 +16,7 @@ export async function GET(
     const { params } = context
     const card = await db.card.findUnique({
       where: {
-        id: params.cardId,
+        id: (await params).cardId,
         list: {
           board: {
             orgId
