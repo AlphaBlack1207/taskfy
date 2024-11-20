@@ -3,10 +3,8 @@ import { auth } from '@clerk/nextjs/server'
 import { ENTITY_TYPE } from '@prisma/client'
 import { NextResponse } from 'next/server'
 
-export async function GET(
-  request: Request,
-  { params }: { params: { cardId: string } }
-) {
+export async function GET(request: Request, props: { params: Promise<{ cardId: string }> }) {
+  const params = await props.params;
   try {
     const { userId, orgId } = await auth()
 

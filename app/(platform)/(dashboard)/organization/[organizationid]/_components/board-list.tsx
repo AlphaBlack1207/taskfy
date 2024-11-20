@@ -1,6 +1,5 @@
 import { FormPopover } from '@/components/form/form-popover'
-import { Hint } from '@/components/hint'
-import { HelpCircle, User2 } from 'lucide-react'
+import { User2 } from 'lucide-react'
 import { db } from '@/lib/db'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
@@ -30,6 +29,14 @@ export const BoardList = async () => {
         Your boards
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <FormPopover sideOffset={10} side="right">
+          <div
+            role="button"
+            className="aspect-video relative h-full w-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transition"
+          >
+            <p className="text-sm">Create new board</p>
+          </div>
+        </FormPopover>
         {boards.map(board => (
           <Link
             key={board.id}
@@ -41,18 +48,6 @@ export const BoardList = async () => {
             <p className="relative font-semibold text-white">{board.title}</p>
           </Link>
         ))}
-        <FormPopover sideOffset={10} side="right">
-          <div
-            role="button"
-            className="aspect-video relative h-full w-full bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity-75 transition"
-          >
-            <p className="text-sm">Create new board</p>
-            <span className="text-xs">Unlimited</span>
-            <Hint sideOffset={40} description={`Create a board for workspace`}>
-              <HelpCircle className="absolute bottom-2 right-2 h-[14px] w-[14px]" />
-            </Hint>
-          </div>
-        </FormPopover>
       </div>
     </div>
   )
