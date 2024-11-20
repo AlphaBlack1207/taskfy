@@ -54,10 +54,42 @@ model Card {
   listId String
   list List @relation(fields: [listId], references: [id], onDelete: Cascade)
 
+  checklists Checklist[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([listId])
+}
+
+model Checklist {
+  id String @id @default(uuid())
+  title String
+  
+  cardId String
+  card Card @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  
+  items ChecklistItem[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([cardId])
+}
+
+model ChecklistItem {
+  id String @id @default(uuid())
+  title String
+  isCompleted Boolean @default(false)
+  order Int
+  
+  checklistId String
+  checklist Checklist @relation(fields: [checklistId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([checklistId])
 }
 
 enum ACTION {
@@ -70,6 +102,8 @@ enum ENTITY_TYPE {
   BOARD
   LIST
   CARD
+  CHECKLIST
+  CHECKLIST_ITEM
 }
 
 model AuditLog {
